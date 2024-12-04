@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: iot-events-mongodb-container
+    ports:
+      - "27017:27017" # Exponha a porta padrão do MongoDB
+    volumes:
+      - mongo-data:/data/db # Persistência de dados
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: adminpassword
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
